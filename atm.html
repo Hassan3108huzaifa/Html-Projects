@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBL Pakistan</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            background-color: #f1f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('arnold-francisca-FBNxmwEVpAc-unsplash.jpg'); /* Specify the URL of your background image */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .container{
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .text-container{
+            margin-top: 0px;
+        }
+        .button-container{
+            width: 100%;
+        }
+        .button-container button{
+            margin-top: 10px;
+            width: 40%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #f8f9fa;
+            cursor: pointer;
+            border:1px solid #0056b3;
+        }
+        .button-container button:hover{
+            background: #0056b3;
+        }
+        #options {
+            display: none;
+        }
+        .options-container button {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #f8f9fa;
+            cursor: pointer;
+            border: 1px solid #0056b3;
+        }
+        .options-container button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-container">
+            <h1>Welcome to the ATM</h1>
+            <h2>Use my name and pin code</h2>
+            <h2 style="color: blue;">Name: huzaifa, Pin: 3108</h2>
+        </div>
+        <div class="pass-container">
+            <input type="text" placeholder="Enter User Name" class="username" id="userName"> 
+            <input type="text" placeholder="Enter User Pin" class="userpin" id="userPin" style="margin-top: 10px;"><br>
+            <div class="button-container">
+                <button onclick="passCheck()" class="enter-button">Click me</button>
+            </div>
+            <h3 id="correctPass"></h3>
+            <div class="options-container" id="options">
+                <button onclick="withdraw()">Withdraw Money</button>
+                <button onclick="deposit()">Deposit Money</button>
+                <button onclick="transfer()">Transfer Money</button>
+                <button onclick="checkBalance()">Check Account Balance</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let myBalance = 10000;
+        let myName = "huzaifa";
+        let myPin = 3108;
+        
+        function passCheck() {
+            let Name = document.getElementById('userName').value;
+            let Pin = parseInt(document.getElementById('userPin').value); // Convert PIN to integer
+            let passCorrect = document.getElementById('correctPass');
+            let options = document.getElementById('options');
+
+            if (myName === Name && myPin === Pin) {
+                console.log("correct");
+                passCorrect.style.color = 'green';
+                passCorrect.innerHTML = 'Correct Password!';
+                options.style.display = 'block'; // Display options
+            } else {
+                console.log("invalid");
+                passCorrect.style.color = 'red';
+                passCorrect.innerHTML = 'Invalid Password';
+                options.style.display = 'none'; // Hide options
+            }
+        }
+
+        function withdraw() {
+            let withdrawAmount = prompt("Enter the amount to withdraw:");
+            withdrawAmount = parseInt(withdrawAmount);
+            if (isNaN(withdrawAmount)) {
+                alert("Please enter a valid amount.");
+            } else if (withdrawAmount <= 0) {
+                alert("Please enter a positive amount to withdraw.");
+            } else if (withdrawAmount > myBalance) {
+                alert("Insufficient balance.");
+            } else {
+                myBalance -= withdrawAmount;
+                alert(`Successfully withdrew ${withdrawAmount}. Remaining balance: ${myBalance}`);
+                console.log(`Successfully withdrew ${withdrawAmount}. Remaining balance: ${myBalance}`);
+            }
+        }
+
+        function deposit() {
+             let depositMoney = prompt("Enter amount to deposit money")
+             depositMoney = parseInt(depositMoney);
+             if (isNaN(depositMoney)) {
+                alert("Please enter a valid amount.");
+            } else if (depositMoney <= 0) {
+                alert("Please enter a positive amount to withdraw.");
+            } 
+            else {
+                myBalance += depositMoney;
+                alert(`Successfully deposited ${depositMoney}. Remaining balance: ${myBalance}`);
+                console.log(`Successfully deposited ${depositMoney}. Remaining balance: ${myBalance}`);
+            }
+        }
+
+        function transfer() {
+            let transferMoney = prompt("Enter amount to transfer money")
+             transferMoney = parseInt(transferMoney);
+             if (isNaN(transferMoney)) {
+                alert("Please enter a valid amount.");
+            } else if (transferMoney <= 0) {
+                alert("Please enter a positive amount to withdraw.");
+            } else if (transferMoney > myBalance) {
+                alert("Insufficient balance.");
+            } else {
+                let transferNamber = prompt("Enter acount name to transfer money");
+                myBalance -= transferMoney;
+                alert(`Successfully transfered: ${transferMoney} in the account: ${transferNamber}. Remaining balance: ${myBalance}`);
+                
+    }}
+        function checkBalance() {
+            alert(`Your Balance is: ${myBalance}`)
+        }
+    </script>
+</body>
+</html>

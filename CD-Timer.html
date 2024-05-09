@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('arnold-francisca-FBNxmwEVpAc-unsplash.jpg');
+            background-size: cover;
+            color: black;
+        }
+
+        .container {
+            border-radius: 12px;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: linear-gradient(red, green, blue);
+        }
+        h1{
+            margin-top: 0;
+            color: white;
+            }
+        button{
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            }
+        button:hover{
+            background-color: black;
+            color: white;
+            }
+        p{
+            font-size: 50px;
+            font-weight: bold;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Count Down Timer</h1>
+        <p>0</p>
+    <button onclick="CountDownTimer()">Start</button>
+    </div>
+    <script>
+       function CountDownTimer(){
+        let time = prompt("Enter seconds to count down")
+        if(isNaN(time)){
+            alert("PLease seconds only numbers")
+        }
+        else{
+            let seconds = parseInt(time)
+            let countdown = setInterval(function() {
+                seconds--;
+                if(seconds == 0){
+                    clearInterval(countdown)
+                }
+                document.querySelector("p").innerHTML = seconds
+        
+            },1000
+        )
+        }
+       }
+    </script>
+</body>
+</html>

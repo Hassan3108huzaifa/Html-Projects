@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            background-image: url('arnold-francisca-FBNxmwEVpAc-unsplash.jpg'); /* Specify the URL of your background image */
+        background-size: cover; /* Cover the entire screen */
+        background-attachment: fixed;
+        background-position: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-container button {
+            
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .output-container p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Word Counter</h1>
+        <div class="output-container" id="output"></div>
+        <div class="input-container">
+            <input type="text" id="inputSentence" placeholder="Enter your sentence to count the words">
+        </div>
+        <div class="button-container">
+            <button onclick="countWords()">Count Words</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for counting words
+        function countWords() {
+            const inputSentence = document.getElementById('inputSentence').value;
+            const words = inputSentence.trim().split(/\s+/); // Split by whitespace and filter out empty strings
+            const wordCount = words.length;
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `<p>Found words in your sentence: ${wordCount}</p>`;
+        }
+    </script>
+</body>
+</html>

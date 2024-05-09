@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hover.css">
+    
+    <title>My Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f1f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('arnold-francisca-FBNxmwEVpAc-unsplash.jpg'); /* Specify the URL of your background image */
+            background-size: cover; /* Cover the entire screen */
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 300px;
+            padding: 20px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #display {
+            padding: 20px;
+            width: calc(100% - 40px); /* Adjusted width to accommodate padding */
+            margin-bottom: 10px; /* Added margin bottom for spacing */
+            font-size: 1.5em; /* Increased font size */
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 15px 20px; /* Adjusted padding for buttons */
+            font-size: 1em; /* Adjusted font size */
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Added transition for smooth hover effect */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .operator {
+            background-color: #f44336; /* Red for operator buttons */
+        }
+
+        #clear {
+            background-color: #ff9800; /* Orange for clear button */
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    
+    <div class="container">
+        <div class="output-container">
+            <input type="textarea" id="display" readonly>
+        </div>
+        <div class="buttin-container">
+
+            
+            <button onclick="appendToDisplay(1)">1</button>
+            <button onclick="appendToDisplay(2)">2</button>
+        <button onclick="appendToDisplay(3)">3</button>
+        <button onclick="appendToDisplay(4)">4</button>
+        <button onclick="appendToDisplay(5)">5</button>
+        <button onclick="appendToDisplay(6)">6</button>
+        <button onclick="appendToDisplay(7)">7</button>
+        <button onclick="appendToDisplay(8)">8</button>
+        <button onclick="appendToDisplay(9)">9</button>
+        <button onclick="appendToDisplay(0)">0</button>
+        <button class="operator" onclick="appendToDisplay('+')">+</button>
+        <button class="operator" onclick="appendToDisplay('-')">-</button>
+        <button class="operator" onclick="appendToDisplay('/')">/</button>
+        <button class="operator" onclick="appendToDisplay('*')">*</button>
+        <button onclick="appendToDisplay('.')">.</button>
+       
+        <button id="result" onclick="calculateResult()">=</button>
+        <button id="clear" onclick="clearDisplay()">C</button>
+    </div>
+
+</div>
+    <script>
+        let display = document.getElementById("display");
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+        
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function calculateResult() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+    </script>
+
+
+
+    
+
+</body>
+
+</html>

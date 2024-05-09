@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number-guessing-game</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;padding: 0;
+            background-image: url('arnold-francisca-FBNxmwEVpAc-unsplash.jpg'); /* Specify the URL of your background image */
+        background-size: cover; /* Cover the entire screen */
+        background-attachment: fixed;
+        background-position: center;
+        }
+        .container{
+            max-width: 600px;
+            padding: 20px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow:0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1{
+            margin-top: 0;
+            color: rgb(53, 53, 53);
+            text-decoration: underline;
+        }
+        h2{
+            color: rgb(32, 32, 32);
+            
+        }
+        
+
+        .input-container{
+            margin-bottom: 20px;
+        }
+        .input-container input[type="text"]{
+            width: 95%;
+            padding: 10px;
+            border-radius: 5px;
+            border:1px solid gray;
+        
+        }
+        .button-container{
+            width: 100%;
+        }
+        .button-container button{
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #f8f9fa;
+            cursor: pointer;
+            border:1px solid #0056b3;
+        }
+        .button-container button:hover{
+            background: #0056b3;
+            }
+        .output-container{
+            background-color: #f0f0f0;
+            margin-top: 20px;
+            width: 97%;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+<div class="text-container">
+    
+    <h1>AI Number Guessing</h1>
+    <h2>Guess the number that I guessed, only between 1 and 10.</h2>
+</div>
+    <div class="output-container" id="output"></div>
+    <div class="input-container">
+        <input type="text" id="input-sentence" placeholder="Enter the number between 1 - 10">
+    </div>
+        <div class="button-container">
+            <button onclick="guessNumber()">Check Your Answere</button>
+    </div>
+    </div>
+
+    <script>
+        
+        let AIguessed = Math.floor(Math.random() * 10 + 1)
+        function guessNumber(){
+            let inputNumber = document.getElementById('input-sentence').value;
+            let outputGuess = document.getElementById('output')
+            let button = document.querySelector('.button-container button')
+            
+            if(inputNumber == AIguessed){
+                outputGuess.innerHTML = `<strong>You Guessed it, AI Guessed: ${AIguessed} ,GameOver, Try to refresh page</strong>`
+                outputGuess.style.color = 'green'
+                button.disabled = true;
+            }else{
+                outputGuess.innerHTML = `Sory! You guessed wrong, Try Different Number`
+                outputGuess.style.color = 'red'
+            }
+            
+            
+        }
+    </script>
+    
+</body>
+</html>

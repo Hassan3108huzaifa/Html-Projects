@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All TypeScript Projects</title>
+    <style>
+        * {
+            margin-top: 1%;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #f1f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('arnold-francisca-FBNxmwEVpAc-unsplash.jpg'); /* Specify the URL of your background image */
+            background-size: cover; /* Cover the entire screen */
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        h1 {
+            color: #f1f0f0;
+        }
+
+        .img-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .img-circle img {
+            width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 150px;
+        }
+
+        .project-link button {
+            width: 100%;
+            margin: 12px auto;
+            padding: 13px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 17px;
+            transition: transform 0.2s;
+        }
+
+        .project-link button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to right, #4e54c8, #8f94fb); /* Gradient background */
+    color: #ffffff; /* Text color */
+    text-align: center;
+    border-top-left-radius: 20px; /* Rounded corners */
+    border-top-right-radius: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.footer-text p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.social-link {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 5px;
+    color: yellow;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-link:hover {
+    color: #f8f9fa; /* Hover color */
+    text-decoration: underline;
+}
+
+
+    </style>
+</head>
+<body>
+<div class="img-circle">
+    <img src="Perfect PHOTO.png" alt="HassanRJ's Profile Picture" />
+</div>
+<h1>HassanRJ</h1>
+<h1>TypeScript Projects</h1>
+<div class="container">
+    <div class="project-link">
+        <button class="myButton" data-link="link1">Word Counter</button>
+        <button class="myButton" data-link="link2">AI Number Guessing</button>
+        
+        <button class="myButton" data-link="link3">HBL  ATM</button>
+        <button class="myButton" data-link="link4">Calculator</button>
+        <button class="myButton" data-link="link5">Student Management</button>
+        <button class="myButton" data-link="link6">Count Down Timer</button>
+
+        <!-- adding more project links -->
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="Perfect PHOTO.png" alt="Profile Picture">
+        </div>
+        <div class="footer-text">
+            <p>&copy; 2024 HassanRJ</p>
+            <div class="social-links">
+                Join me on
+                <a href="https://www.linkedin.com/in/hassan-rj-148220295/" class="social-link" target="_blank">LinkedIn</a>
+                and
+                <a href="https://github.com/Hassan3108huzaifa" class="social-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    let buttons = document.querySelectorAll(".myButton");
+    for (const button of buttons) {
+        button.addEventListener("click", function () {
+            let link = this.getAttribute("data-link");
+
+            if (link == "link1") {
+                window.location.href = "word-counter.html";
+            } else if (link == "link2") {
+                window.location.href = "Number-Guessing.html";
+            } else if (link == "link3") {
+                window.location.href = "atm.html";
+            }else if (link == "link4") {
+                window.location.href = "calculator.html";
+            }
+            else if (link == "link5") {
+                window.location.href = "stmApp.html";
+            }
+            else if (link == "link6") {
+                window.location.href = "CD-Timer.html";
+            }
+
+
+
+            });
+    }
+</script>
+</body>
+</html>

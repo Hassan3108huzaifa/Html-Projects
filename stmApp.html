@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management app</title>
+    <style>
+        *{
+            padding: 0;margin: 0;
+        }
+        body{
+            font-family: sans-serif;
+            text-align: center;
+            background-image: url(arnold-francisca-FBNxmwEVpAc-unsplash.jpg);
+            background-size: cover;
+
+        }
+        .container{
+            max-width:600px;        
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .text-container{
+            margin-bottom: 20px;
+        }
+        input[type='text']{
+            width: 96%;
+            padding: 7px;
+            
+        }
+        select{
+            width: 100%;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            padding: 7px;
+        }
+        input[type='submit']{
+            width: 100%;
+            padding: 7px;
+        }
+        h3{
+            margin-top: 10px;
+            color: green;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-container">
+            <h1>Welcome</h1>
+            <h2>Student Management App</h2>
+        </div>
+        <form action="register" id="registrationForm">
+            <label for="studentName">Student name:</label>
+            <input type="text" name="studentName" id="studentName" placeholder="Enter student name" required>
+        
+            <select name="course" id="course">
+                <option value="0">Select course</option>
+                <option value="Python Programming">Python Programming</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Mobile App Development">Mobile App Development</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <input type="submit" value="Register">
+            </select>
+            <h3 id="registered"></h3>
+        </form>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                    </tr>
+                </thead>
+                <tbody id="studentList">
+                    
+                </tbody>
+            </table>
+        </div>
+ 
+    </div>
+
+    <script>
+        let form = document.getElementById('registrationForm');
+        let studentList = document.getElementById('studentList');
+        let stdRegister = document.getElementById('registered');
+    
+        // Function to retrieve registered students from localStorage
+        function getRegisteredStudents() {
+            const students = JSON.parse(localStorage.getItem('registeredStudents')) || [];
+            return students;
+        }
+    
+        // Function to display registered students on page load
+        function displayRegisteredStudents() {
+            const students = getRegisteredStudents();
+            students.forEach(student => {
+                let newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${student.ID}</td>
+                    <td>${student.name}</td>
+                    <td>${student.course}</td>
+                `;
+                studentList.appendChild(newRow);
+            });
+        }
+    
+        // Display registered students when page loads
+        window.addEventListener('load', displayRegisteredStudents);
+    
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+            const studentName = document.getElementById('studentName').value;
+            const course = document.getElementById('course').value;
+            if (!/^[A-Za-z\s]+$/.test(studentName)) {
+                alert('Please enter a valid name (Numbers are not allowed.');
+                return;
+            }
+            if(course == 0){
+                alert('Please select a course');
+                return;
+            }
+    
+            let ID = Math.floor(Math.random() * 9000 + 5000);
+            stdRegister.innerHTML = `${studentName} is registered for ${course}!`;
+    
+            // Save registered student to localStorage
+            let students = getRegisteredStudents();
+            students.push({ ID, name: studentName, course });
+            localStorage.setItem('registeredStudents', JSON.stringify(students));
+    
+            let newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${ID}</td>
+                <td>${studentName}</td>
+                <td>${course}</td>
+            `;
+            studentList.appendChild(newRow);
+            form.reset();
+        });
+    </script>
+    
+</body>
+</html>
